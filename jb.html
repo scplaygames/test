@@ -164,38 +164,6 @@
     </div>
     <script type="module">
       import "./jb.js?v=19";
-  (function () {
-    const DELAY_MS = 3000;
-    let ran = false;
-
-    function exitLikeBack() {
-      if (ran) return;
-      ran = true;
-
-      setTimeout(() => {
-        // Intenta volver a la pantalla anterior del navegador/launcher
-        // (equivalente a "volver/salir" desde el entorno).
-        try { history.back(); } catch (e) {}
-      }, DELAY_MS);
-    }
-
-    const observer = new MutationObserver(() => {
-      if (document.body && document.body.classList.contains("done")) {
-        exitLikeBack();
-        observer.disconnect();
-      }
-    });
-
-    if (document.body) {
-      observer.observe(document.body, { attributes: true, attributeFilter: ["class"] });
-
-      // Por si "done" ya está puesto
-      if (document.body.classList.contains("done")) {
-        exitLikeBack();
-        observer.disconnect();
-      }
-    }
-  })();
 </script>
   </body>
 </html>
